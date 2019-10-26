@@ -33,7 +33,8 @@ func echo(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 		log.Printf("recv: %s", message)
-		err = c.WriteMessage(mt, message)
+		strEcho = "Echo Server: "
+		err = c.WriteMessage(mt, []byte(strEcho+string(message)))
 		if err != nil {
 			log.Println("write:", err)
 			break
